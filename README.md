@@ -23,6 +23,8 @@ Some examples:
 
 In the moment, the reference algorithm for encoding and decoding is implemented in JavaScript. I'm open to implementations in other programming languages like PHP, Java, C++, C# or Python. I'm also interested in alternative syllables lists that allow something like a more compact base256s encoding.
 
+The code is under public domain. Push requests are appreciated.
+
 Usage
 -----
 
