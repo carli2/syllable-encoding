@@ -1,14 +1,10 @@
-var syllabus = ["ber","kan","dong","do","fei","wen","chi","ming","tor","mod","gon","pu","da","re","fing","fi","sal","sa","long","lor","lo","gan","tes","ling","yor","des","war","mat","mi","seng","mei","fur"];
+var syllables = ["ber","kan","dong","do","fei","wen","chi","ming","tor","mod","gon","pu","da","re","fing","fi","sal","sa","long","lor","lo","gan","tes","ling","yor","des","war","mat","mi","seng","mei","fur"];
 
-function isVocal(c) {
-	return 'aeiou'.indexOf(c) != -1;
-}
-
-function base32s(number) {
+function base32s_encode(number) {
 	var s = '';
 	while (number) {
-		s += syllabus[number%syllabus.length];
-		number = Math.floor(number / syllabus.length);
+		s += syllables[number%syllables.length];
+		number = Math.floor(number / syllables.length);
 	}
 	if (!s) return 'Nix';
 	return s[0].toUpperCase() + s.substr(1);
@@ -21,10 +17,10 @@ function base32s_decode(s) {
 	var p = s.length;
 	while (p) {
 		var found = false;
-		for (var i = 0; i < syllabus.length; i++) {
-			if (p >= syllabus[i].length && s.indexOf(syllabus[i], p - syllabus[i].length) == p - syllabus[i].length) {
-				result = result * syllabus.length + i;
-				p -= syllabus[i].length;
+		for (var i = 0; i < syllables.length; i++) {
+			if (p >= syllables[i].length && s.indexOf(syllables[i], p - syllables[i].length) == p - syllables[i].length) {
+				result = result * syllables.length + i;
+				p -= syllables[i].length;
 				found = true;
 				break;
 			}
@@ -38,8 +34,7 @@ function base32s_decode(s) {
 
 if (typeof module !== 'undefined') {
 	module.exports = {
-		isVocal: isVocal,
-		base32s: base32s,
+		base32s_encode: base32s_encode,
 		base32s_decode: base32s_decode
 	}
 }
